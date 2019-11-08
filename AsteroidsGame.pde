@@ -26,6 +26,9 @@ public void keyPressed() {
   if (key == 'w') {
   	uwu.accelerate(0.075);
   }
+  if (key == 's') {
+  	uwu.accelerate(-1*0.075);
+  }
   if (key == CODED) {
   	if (keyCode == SHIFT) {
   		uwu.hyperspace();
