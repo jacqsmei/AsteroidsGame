@@ -1,14 +1,22 @@
 //your variable declarations here
 Spaceship uwu;
+Star[] shiny;
 public void setup() 
 {
   size(600, 600);
   background(0);
   uwu = new Spaceship();
+  shiny = new Star[100];
+  for (int i=0; i<shiny.length; i++) {
+  	shiny[i] = new Star();
+  }
 }
 public void draw() 
 {
   background(0);
+  for (int i=0; i<shiny.length; i++) {
+  	shiny[i].show();
+  }
   uwu.show();
   uwu.move();
   if (!keyPressed) {
