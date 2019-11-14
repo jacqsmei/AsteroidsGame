@@ -39,6 +39,7 @@ class Spaceship extends Floater
     }
     endShape(CLOSE);
 
+    //rocket animation
     if(keyPressed) {
     	if (key == 'w') {
     		line(-18, 5, -23, 9);
