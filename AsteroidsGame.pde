@@ -1,6 +1,7 @@
 //your variable declarations here
 Spaceship uwu;
 Star[] shiny;
+boolean a, w, s, d, shift = false;
 public void setup() 
 {
   size(600, 600);
@@ -20,26 +21,55 @@ public void draw()
   uwu.show();
   uwu.move();
   if (!keyPressed) {
-	uwu.setDirectionX(0);
+  	uwu.setDirectionX(0);
   	uwu.setDirectionY(0);
   }
 }
 public void keyPressed() {
   if (key == 'a') {
-  	uwu.turn(-10);
+  	a = true;
+  } else {
+  	a = false;
   }
   if (key == 'd') {
-  	uwu.turn(10);
+  	d = true;
+  } else {
+  	d = false;
   }
   if (key == 'w') {
-  	uwu.accelerate(0.075);
+  	w = true;
+  } else {
+  	w = false;
   }
   if (key == 's') {
-  	uwu.accelerate(-1*0.075);
+  	s = true;
+  } else {
+  	s = false;
   }
   if (key == CODED) {
   	if (keyCode == SHIFT) {
-  		uwu.hyperspace();
+  		shift = true;
+  	} else {
+  		shift = false;
   	}
+  } else {
+  	shift = false;
+  }
+  if (a) {
+  	uwu.turn(-10);
+  }
+  if (d) {
+  	uwu.turn(10);
+  }
+  if (w) {
+  	uwu.accelerate(0.075);
+  }
+  if (s) {
+  	uwu.accelerate(-1*0.075);
+  }
+  if (shift) {
+  	uwu.hyperspace();
   }
 }
+
+
