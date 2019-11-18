@@ -1,6 +1,7 @@
 //your variable declarations here
 Spaceship uwu;
 Star[] shiny;
+Asteroid woo;
 boolean a, w, s, d, shift = false;
 public void setup() 
 {
