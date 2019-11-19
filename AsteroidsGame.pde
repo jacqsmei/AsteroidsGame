@@ -1,7 +1,7 @@
 //your variable declarations here
 Spaceship uwu;
 Star[] shiny;
-Asteroid woo;
+ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 boolean a, w, s, d, shift = false;
 public void setup() 
 {
@@ -12,6 +12,9 @@ public void setup()
   for (int i=0; i<shiny.length; i++) {
   	shiny[i] = new Star();
   }
+  for (int i=0; i<10; i++) {
+  	owo.add(new Asteroid());
+  }
 }
 public void draw() 
 {
@@ -21,6 +24,10 @@ public void draw()
   }
   uwu.show();
   uwu.move();
+  for (int i=0; i<owo.size(); i++) {
+  	owo.get(i).show();
+  	owo.get(i).move();
+  }
   if (!keyPressed) {
   	uwu.setDirectionX(0);
   	uwu.setDirectionY(0);
