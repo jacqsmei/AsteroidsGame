@@ -2,7 +2,8 @@
 Spaceship uwu;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
-boolean a, w, s, d, shift = false;
+ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
+boolean a, w, s, d, shift, e = false;
 public void setup() 
 {
   size(600, 600);
@@ -22,11 +23,15 @@ public void draw()
   for (int i=0; i<shiny.length; i++) {
   	shiny[i].show();
   }
-  uwu.show();
   uwu.move();
+  uwu.show();
   for (int i=0; i<owo.size(); i++) {
   	owo.get(i).show();
   	owo.get(i).move();
+  }
+  for (int i=0; i<pewpew.size(); i++) {
+  	pewpew.get(i).show();
+  	pewpew.get(i).move();
   }
   if (!keyPressed) {
   	uwu.setDirectionX(0);
@@ -54,6 +59,11 @@ public void keyPressed() {
   } else {
   	s = false;
   }
+  if (key == 'e') {
+  	e = true;
+  } else {
+  	e = false;
+  }
   if (key == CODED) {
   	if (keyCode == SHIFT) {
   		shift = true;
@@ -77,6 +87,9 @@ public void keyPressed() {
   }
   if (shift) {
   	uwu.hyperspace();
+  }
+  if (e) {
+  	pewpew.add(new Bullet(uwu));
   }
 }
 
