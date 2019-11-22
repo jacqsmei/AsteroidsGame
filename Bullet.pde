@@ -14,4 +14,10 @@ class Bullet extends Floater {
 		fill(myColor);
 		ellipse((float)myCenterX, (float)myCenterY, 5, 5);
 	}
+	public double getCenterX() {
+		return myCenterX;
+	}
+	public double getCenterY() {
+		return myCenterY;
+	}
 }
