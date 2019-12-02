@@ -37,18 +37,26 @@ public void draw()
   	uwu.setDirectionX(0);
   	uwu.setDirectionY(0);
   }
-  for (int i=0; i<pewpew.size(); i++) {
-  	if (pewpew.get(i).getCenterX()>600 || pewpew.get(i).getCenterX()<0) {
-  		pewpew.remove(i);
-  	}
-  	if (pewpew.get(i).getCenterY()>600 || pewpew.get(i).getCenterY()<0)
-  	for (int j=0; j<owo.size(); j++) {
-  		if (dist((float)(pewpew.get(i).getCenterX()), (float)(pewpew.get(j).getCenterY()), (float)owo.get(j).getCenterX(), (float)owo.get(j).getCenterY()) <10) {
-			pewpew.remove(i);
-			owo.remove(j);
-		}
-  	}
-  }
+  if (pewpew.size()>0 && owo.size()>0) {
+	  for (int i=pewpew.size()-1; i>=0; i--) {
+	  	for (int j=owo.size()-1; j>=0; j--) {
+	  		if (dist((float)(pewpew.get(i).getCenterX()), (float)(pewpew.get(i).getCenterY()), (float)owo.get(j).getCenterX(), (float)owo.get(j).getCenterY())<10) {
+				pewpew.remove(i);
+				owo.remove(j);
+				break;
+			}
+			if (pewpew.get(i).getCenterX()>600 || pewpew.get(i).getCenterX()<0) {
+	  			System.out.println(pewpew.get(i).getCenterX());
+	  			pewpew.remove(i);
+	  			break;
+	  		}
+	  		if (pewpew.get(i).getCenterY()>600 || pewpew.get(i).getCenterY()<0) {
+	  			pewpew.remove(i);
+	  			break;
+	  		}
+	  }
+	}
+}
 }
 public void keyPressed() {
   if (key == 'a') {
