@@ -4,6 +4,7 @@ Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
 boolean a, w, s, d, shift, e = false;
+
 public void setup() 
 {
   size(600, 600);
@@ -17,6 +18,7 @@ public void setup()
   	owo.add(new Asteroid());
   }
 }
+
 public void draw() 
 {
   background(0);
@@ -40,24 +42,30 @@ public void draw()
   if (pewpew.size()>0 && owo.size()>0) {
 	  for (int i=pewpew.size()-1; i>=0; i--) {
 	  	for (int j=owo.size()-1; j>=0; j--) {
+	  		System.out.println(pewpew.get(i).getCenterX());
 	  		if (dist((float)(pewpew.get(i).getCenterX()), (float)(pewpew.get(i).getCenterY()), (float)owo.get(j).getCenterX(), (float)owo.get(j).getCenterY())<10) {
 				pewpew.remove(i);
 				owo.remove(j);
 				break;
 			}
-			if (pewpew.get(i).getCenterX()>600 || pewpew.get(i).getCenterX()<0) {
-	  			System.out.println(pewpew.get(i).getCenterX());
-	  			pewpew.remove(i);
-	  			break;
-	  		}
-	  		if (pewpew.get(i).getCenterY()>600 || pewpew.get(i).getCenterY()<0) {
-	  			pewpew.remove(i);
-	  			break;
-	  		}
-	  }
+	  	}
 	}
+  }
+
+  if (pewpew.size()>0) {
+  	for (int i=pewpew.size()-1; i>=0; i--) {
+  		if (pewpew.get(i).getCenterX()>=600 || pewpew.get(i).getCenterX()<=5) {
+	  			pewpew.remove(i);
+	  			break;
+		}
+		if (pewpew.get(i).getCenterY()>=600 || pewpew.get(i).getCenterY()<=0) {
+	  			pewpew.remove(i);
+	  			break;
+	 	}
+  	}
+  }
 }
-}
+
 public void keyPressed() {
   if (key == 'a') {
   	a = true;
