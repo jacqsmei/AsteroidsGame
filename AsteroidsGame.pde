@@ -39,10 +39,11 @@ public void draw()
   	uwu.setDirectionX(0);
   	uwu.setDirectionY(0);
   }
+
+  //checking bullet asteroid collision
   if (pewpew.size()>0 && owo.size()>0) {
 	  for (int i=pewpew.size()-1; i>=0; i--) {
 	  	for (int j=owo.size()-1; j>=0; j--) {
-	  		System.out.println(pewpew.get(i).getCenterX());
 	  		if (dist((float)(pewpew.get(i).getCenterX()), (float)(pewpew.get(i).getCenterY()), (float)owo.get(j).getCenterX(), (float)owo.get(j).getCenterY())<10) {
 				pewpew.remove(i);
 				owo.remove(j);
@@ -52,6 +53,7 @@ public void draw()
 	}
   }
 
+  //checking bullet coords off screen
   if (pewpew.size()>0) {
   	for (int i=pewpew.size()-1; i>=0; i--) {
   		if (pewpew.get(i).getCenterX()>=600 || pewpew.get(i).getCenterX()<=5) {
