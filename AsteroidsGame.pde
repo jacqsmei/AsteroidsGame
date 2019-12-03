@@ -8,6 +8,7 @@ boolean a, w, s, d, shift, e = false;
 public void setup() 
 {
   size(600, 600);
+  textAlign(CENTER);
   background(0);
   uwu = new Spaceship();
   shiny = new Star[100];
@@ -66,6 +67,7 @@ public void draw()
 	 	}
   	}
   }
+
 }
 
 public void keyPressed() {
