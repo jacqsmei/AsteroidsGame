@@ -36,9 +36,11 @@ public void draw()
   	pewpew.get(i).show();
   	pewpew.get(i).move();
   }
+
+
   if (!keyPressed) {
-  	uwu.setDirectionX(0);
-  	uwu.setDirectionY(0);
+    uwu.setDirectionX(0);
+    uwu.setDirectionY(0);
   }
 
   //checking bullet asteroid collision
@@ -71,58 +73,87 @@ public void draw()
 }
 
 public void keyPressed() {
+  // if (key == 'a') {
+  // 	a = true;
+  // } 
+  // // else {
+  // //  	a = false;
+  // //  }
+  // if (key == 'd') {
+  // 	d = true;
+  // } 
+  // // else {
+  // //   d = false;
+  // // }
+  // if (key == 'w') {
+  // 	w = true;
+  // } 
+  // // else {
+  // // 	w = false;
+  // // }
+  // if (key == 's') {
+  // 	s = true;
+  // } 
+  // // else {
+  // // 	s = false;
+  // // }
+  // if (key == 'e') {
+  // 	e = true;
+  // } 
+  // else {
+  // 	e = false;
+  // }
+  // if (key == CODED) {
+  // 	if (keyCode == SHIFT) {
+  // 		shift = true;
+  // 	} 
+  //  //  else {
+  // 	// 	shift = false;
+  // 	// }
+  // } 
+  // // else {
+  // // 	shift = false;
+  // // }
+  //     if (a) {
+  //   uwu.turn(-10);
+  // }
+  // if (d) {
+  //   uwu.turn(10);
+  // }
+  // if (w) {
+  //   uwu.accelerate(0.075);
+  // }
+  // if (s) {
+  //   uwu.accelerate(-1*0.075);
+  // }
+  // if (shift) {
+  //   uwu.hyperspace();
+  // }
+  // if (e) {
+  //   pewpew.add(new Bullet(uwu));
+  // }
+
+
   if (key == 'a') {
-  	a = true;
-  } else {
-  	a = false;
+    uwu.turn(-10);
   }
   if (key == 'd') {
-  	d = true;
-  } else {
-  	d = false;
+    uwu.turn(10);
   }
   if (key == 'w') {
-  	w = true;
-  } else {
-  	w = false;
+    uwu.accelerate(0.075);
   }
   if (key == 's') {
-  	s = true;
-  } else {
-  	s = false;
+    uwu.accelerate(-1*0.075);
+  }
+  if (key == CODED && keyCode == SHIFT) {
+    uwu.hyperspace();
   }
   if (key == 'e') {
-  	e = true;
-  } else {
-  	e = false;
-  }
-  if (key == CODED) {
-  	if (keyCode == SHIFT) {
-  		shift = true;
-  	} else {
-  		shift = false;
-  	}
-  } else {
-  	shift = false;
-  }
-  if (a) {
-  	uwu.turn(-10);
-  }
-  if (d) {
-  	uwu.turn(10);
-  }
-  if (w) {
-  	uwu.accelerate(0.075);
-  }
-  if (s) {
-  	uwu.accelerate(-1*0.075);
-  }
-  if (shift) {
-  	uwu.hyperspace();
-  }
-  if (e) {
-  	pewpew.add(new Bullet(uwu));
+    pewpew.add(new Bullet(uwu));
   }
 }
+
+
 
 
