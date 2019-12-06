@@ -148,7 +148,7 @@ public void win() {
   background(0);
   fill(255, 255, 0);
   text("you won!", 300, 300);
-  text("press e to restart", 300, 350);
+  text("press r to restart", 300, 350);
 }
 
 public void shipAst() {
@@ -165,7 +165,7 @@ public void lose() {
   background(0);
   fill(255, 0, 0);
   text("you died", 300, 300);
-  text("press e to restart", 300, 350);
+  text("press r to restart", 300, 350);
 }
 
 public void removeAll() {
@@ -176,7 +176,7 @@ public void removeAll() {
 }
 
 public void restart() {
-  if (keyPressed && key == 'e') {
+  if (keyPressed && key == 'r') {
     mode = 1;
     removeAll();
     background(0);
