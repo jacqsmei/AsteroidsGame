@@ -3,7 +3,7 @@ Spaceship uwu;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
-boolean a, w, s, d, e = false;
+int mode = 0;
 
 public void setup() 
 {
@@ -22,20 +22,43 @@ public void setup()
 
 public void draw() 
 {
-  background(0);
-
-  shiny();
-  owo();
-  uwu();
-  pewpew();
-
-  if (!keyPressed) {
-    stopAccel();
+  if (mode == 0) {
+    startingScr();
+    if (keyPressed && key == 'e') {
+      mode = 1;
+    }
   }
+  if (mode == 1) {
+    background(0);
+    shiny();
+    owo();
+    uwu();
+    pewpew();
+    if (!keyPressed) {
+      stopAccel();
+    }
+    bulletAst();
+    bulletScr();
+    noAst();
+    shipAst();
+  }
+  if (mode == 2) {
+    win();
+    restart();
+  }
+  if (mode == 3) {
+    lose();
+    restart();
+  }
+}
 
-  bulletAst();
-  bulletScr();
-  shipAst();
+public void startingScr() {
+  background(0);
+  fill(255);
+  textSize(14);
+  text("asteroids.", 300, 300);
+  textSize(10);
+  text("press e to start", 300, 350);
 }
 
 public void keyPressed() {
@@ -115,15 +138,48 @@ public void bulletScr() {
   }
 }
 
+public void noAst() {
+  if (owo.size()==0) {
+    mode = 2;
+  }
+}
+
+public void win() {
+  background(0);
+  fill(255, 255, 0);
+  text("you won!", 300, 300);
+  text("press e to restart", 300, 350);
+}
+
 public void shipAst() {
   if (owo.size()>0) {
     for (int i=owo.size()-1; i>=0; i--) {
       if (dist((float)owo.get(i).getCenterX(), (float)owo.get(i).getCenterY(), (float)uwu.getCenterX(), (float)uwu.getCenterY())<=15) {
-        noLoop();
-        background(0);
-        fill(255, 0, 0);
-        text("you died", 300, 300);
+        mode = 3;
       }
     }
+  }
+}
+
+public void lose() {
+  background(0);
+  fill(255, 0, 0);
+  text("you died", 300, 300);
+  text("press e to restart", 300, 350);
+}
+
+public void removeAll() {
+  for (int i=owo.size()-1; i>=0; i--) {
+    owo.remove(i);
+  }
+  shiny = null;
+}
+
+public void restart() {
+  if (keyPressed && key == 'e') {
+    mode = 1;
+    removeAll();
+    background(0);
+    setup();
   }
 }
