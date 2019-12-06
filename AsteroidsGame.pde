@@ -3,7 +3,7 @@ Spaceship uwu;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
-boolean a, w, s, d, shift, e = false;
+boolean a, w, s, d, e = false;
 
 public void setup() 
 {
@@ -35,6 +35,7 @@ public void draw()
 
   bulletAst();
   bulletScr();
+  shipAst();
 }
 
 public void keyPressed() {
@@ -117,8 +118,11 @@ public void bulletScr() {
 public void shipAst() {
   if (owo.size()>0) {
     for (int i=owo.size()-1; i>=0; i--) {
-      if (dist((float)owo.get(i).getCenterX(), (float)owo.get(i).getCenterY(), (float)uwu.getCenterX(), (float)uwu.getCenterY())>=15) {
-        
+      if (dist((float)owo.get(i).getCenterX(), (float)owo.get(i).getCenterY(), (float)uwu.getCenterX(), (float)uwu.getCenterY())<=15) {
+        noLoop();
+        background(0);
+        fill(255, 0, 0);
+        text("you died", 300, 300);
       }
     }
   }
