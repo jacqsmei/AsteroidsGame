@@ -1,9 +1,19 @@
-//your variable declarations here
+//variable declarations
 Spaceship uwu;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
+//booleans to check if keys are pressed
+boolean a, w, s, d, shift = false;
+//game screen mode
 int mode = 0;
+/*
+modes:
+0 = start
+1 = game
+2 = win
+3 = lose
+*/
 
 public void setup() 
 {
@@ -34,9 +44,7 @@ public void draw()
     owo();
     uwu();
     pewpew();
-    if (!keyPressed) {
-      stopAccel();
-    }
+    checkKeys();
     bulletAst();
     bulletScr();
     noAst();
@@ -52,6 +60,7 @@ public void draw()
   }
 }
 
+//draw starting screen
 public void startingScr() {
   background(0);
   fill(255);
@@ -61,26 +70,70 @@ public void startingScr() {
   text("press e to start", 300, 350);
 }
 
+//check key pressing and set booleans to true
 public void keyPressed() {
   if (key == 'a') {
-    uwu.turn(-10);
-  }
-  if (key == 'd') {
-    uwu.turn(10);
+    a = true;
   }
   if (key == 'w') {
-    uwu.accelerate(0.075);
+    w = true;
   }
   if (key == 's') {
-    uwu.accelerate(-1*0.075);
+    s = true;
+  }
+  if (key == 'd') {
+    d = true;
   }
   if (key == CODED && keyCode == SHIFT) {
-    uwu.hyperspace();
+    shift = true;
   }
 }
 
+//check key release and set booleans to false
+public void keyReleased() {
+  if (key == 'a') {
+    a = false;
+  }
+  if (key == 'w') {
+    w = false;
+  }
+  if (key == 's') {
+    s = false;
+  }
+  if (key == 'd') {
+    d = false;
+  }
+  if (key == CODED && keyCode == SHIFT) {
+    shift = false;
+  }
+}
+
+//check booleans and turn, accel, etc
+public void checkKeys() {
+  if (a) {
+    uwu.turn(-5);
+  }
+  if (w) {
+    uwu.accelerate(0.075);
+  }
+  if (s) {
+    uwu.accelerate(-0.075);
+  }
+  if (d) {
+    uwu.turn(5);
+  }
+  if (shift) {
+    uwu.hyperspace();
+  }
+  if (!w && !s) {
+    stopAccel();
+  }
+}
+
+//check if mouse is pressed and shoot
 public void mousePressed() {pewpew.add(new Bullet(uwu));}
 
+//initializing
 public void shiny() {
   for (int i=0; i<shiny.length; i++) {shiny[i].show();}
 }
@@ -104,11 +157,13 @@ public void pewpew() {
   } 
 }
 
+//stop acceleration
 public void stopAccel() {
     uwu.setDirectionX(0);
     uwu.setDirectionY(0);  
 }
 
+//check bullet asteroid collision
 public void bulletAst() {
   if (pewpew.size()>0 && owo.size()>0) {
     for (int i=pewpew.size()-1; i>=0; i--) {
@@ -123,6 +178,7 @@ public void bulletAst() {
   }
 }
 
+//check bullets that go off screen
 public void bulletScr() {
   if (pewpew.size()>0) {
     for (int i=pewpew.size()-1; i>=0; i--) {
@@ -138,12 +194,14 @@ public void bulletScr() {
   }
 }
 
+//check if no asteroids left, game win
 public void noAst() {
   if (owo.size()==0) {
     mode = 2;
   }
 }
 
+// draw win screen
 public void win() {
   background(0);
   fill(255, 255, 0);
@@ -151,6 +209,7 @@ public void win() {
   text("press r to restart", 300, 350);
 }
 
+//check ship asteroid collision, game lose
 public void shipAst() {
   if (owo.size()>0) {
     for (int i=owo.size()-1; i>=0; i--) {
@@ -161,6 +220,7 @@ public void shipAst() {
   }
 }
 
+//draw lose screen
 public void lose() {
   background(0);
   fill(255, 0, 0);
@@ -168,13 +228,18 @@ public void lose() {
   text("press r to restart", 300, 350);
 }
 
+//resetting game for restart
 public void removeAll() {
   for (int i=owo.size()-1; i>=0; i--) {
     owo.remove(i);
   }
+  for (int i=pewpew.size()-1; i>=0; i--) {
+    pewpew.remove(i);
+  }
   shiny = null;
 }
 
+//restart game
 public void restart() {
   if (keyPressed && key == 'r') {
     mode = 1;
