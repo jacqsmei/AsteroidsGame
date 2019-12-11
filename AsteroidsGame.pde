@@ -40,10 +40,10 @@ public void draw()
   }
   if (mode == 1) {
     background(0);
-    shiny();
-    owo();
-    uwu();
-    pewpew();
+    star();
+    ship();
+    ast();
+    bullet();
     checkKeys();
     bulletAst();
     bulletScr();
@@ -134,23 +134,23 @@ public void checkKeys() {
 public void mousePressed() {pewpew.add(new Bullet(uwu));}
 
 //initializing
-public void shiny() {
+public void star() {
   for (int i=0; i<shiny.length; i++) {shiny[i].show();}
 }
 
-public void uwu() {
+public void ship() {
   uwu.move();
   uwu.show();
 }
 
-public void owo() {
+public void ast() {
   for (int i=0; i<owo.size(); i++) {
     owo.get(i).show();
     owo.get(i).move();
   }
 }
 
-public void pewpew() {
+public void bullet() {
   for (int i=0; i<pewpew.size(); i++) {
     pewpew.get(i).show();
     pewpew.get(i).move();
