@@ -111,7 +111,7 @@ public void keyReleased() {
 //check booleans and turn, accel, etc
 public void checkKeys() {
   if (a) {
-    uwu.turn(-5);
+    uwu.turn(-2);
   }
   if (w) {
     uwu.accelerate(0.075);
@@ -120,7 +120,7 @@ public void checkKeys() {
     uwu.accelerate(-0.075);
   }
   if (d) {
-    uwu.turn(5);
+    uwu.turn(2);
   }
   if (shift) {
     uwu.hyperspace();
