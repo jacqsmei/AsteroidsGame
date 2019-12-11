@@ -33,6 +33,7 @@ public void setup()
 public void draw() 
 {
   if (mode == 0) {
+    restart();
     startingScr();
     if (keyPressed && key == 'e') {
       mode = 1;
@@ -68,6 +69,7 @@ public void startingScr() {
   text("asteroids.", 300, 300);
   textSize(10);
   text("press e to start", 300, 350);
+  text("press f at anytime to quit", 300, 400);
 }
 
 //check key pressing and set booleans to true
