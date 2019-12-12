@@ -216,6 +216,7 @@ public void noAst() {
 public void win() {
   background(0);
   fill(255, 255, 0);
+  textSize(12);
   text("you won!", 300, 300);
   text("press r to restart", 300, 350);
 }
@@ -235,6 +236,7 @@ public void shipAst() {
 public void lose() {
   background(0);
   fill(255, 0, 0);
+  textSize(12);
   text("you died", 300, 300);
   text("press r to restart", 300, 350);
 }
