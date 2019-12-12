@@ -50,6 +50,7 @@ public void draw()
     bulletScr();
     noAst();
     shipAst();
+    checkF();
   }
   if (mode == 2) {
     win();
