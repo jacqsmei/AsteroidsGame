@@ -55,10 +55,12 @@ public void draw()
   if (mode == 2) {
     win();
     restart();
+    checkF();
   }
   if (mode == 3) {
     lose();
     restart();
+    checkF();
   }
 }
 
@@ -70,7 +72,7 @@ public void startingScr() {
   text("asteroids.", 300, 300);
   textSize(10);
   text("press e to start", 300, 350);
-  text("press f at anytime to quit", 300, 400);
+  text("press f at anytime to pause", 300, 400);
 }
 
 //check key pressing and set booleans to true
@@ -134,7 +136,7 @@ public void checkKeys() {
 }
 
 public void checkF() {
-  if (keyPressed && key = 'f') {
+  if (keyPressed && key == 'f') {
     mode = 0;
   }
 }
