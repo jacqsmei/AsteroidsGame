@@ -132,6 +132,12 @@ public void checkKeys() {
   }
 }
 
+public void checkF() {
+  if (keyPressed && key = 'f') {
+    mode = 0;
+  }
+}
+
 //check if mouse is pressed and shoot
 public void mousePressed() {pewpew.add(new Bullet(uwu));}
 
