@@ -1,8 +1,13 @@
+import java.util.*;
 //variable declarations
 Spaceship uwu;
+Spaceship ufo;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
+ArrayList <Bullet> ohnos = new ArrayList <Bullet>();
+Timer timer;
+int delay = 30000;
 //booleans to check if keys are pressed
 boolean a, w, s, d, shift = false;
 //game screen mode
@@ -20,7 +25,8 @@ public void setup()
   size(600, 600);
   textAlign(CENTER);
   background(0);
-  uwu = new Spaceship();
+  uwu = new Spaceship(255, 255, 255);
+  ufo = new Spaceship(255, 0, 0);
   shiny = new Star[100];
   for (int i=0; i<shiny.length; i++) {
   	shiny[i] = new Star();
@@ -28,6 +34,7 @@ public void setup()
   for (int i=0; i<10; i++) {
   	owo.add(new Asteroid());
   }
+  timer = new Timer();
 }
 
 public void draw() 
@@ -166,6 +173,41 @@ public void bullet() {
     pewpew.get(i).show();
     pewpew.get(i).move();
   } 
+}
+
+// 01.
+// int delay = 5000; //msecs
+// 02.
+// Timer timer = new Timer();
+// 03.
+// timer.schedule(new TimerTask()
+// 04.
+// {
+// 05.
+// public void run()
+// 06.
+// {
+// 07.
+// // put the code you want to run here
+// 08.
+// // It will get executed in 5000 msecs
+// 09.
+// }
+// 10.
+// }, delay);
+
+public void ufoLaunch() {
+  timer.schedule(new TimerTask() {
+    public void run() {
+      loop();
+      ufo.show();
+      ufo.move();
+      ufo.setDirectionX(uwu.getDirectionX());
+      ufo.setDirectionY(uwu.getDirectionY());
+    }
+  },
+  delay
+  );
 }
 
 //stop acceleration
