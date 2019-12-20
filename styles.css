@@ -14,11 +14,10 @@ body {
 }
 
 header {
-	
+
 }
 
 footer {
-	font-style: italic;
+	font-style: italic, bold;
 	font-size: 90%;
 }
-
