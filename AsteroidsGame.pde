@@ -1,11 +1,11 @@
 import java.util.*;
 //variable declarations
 Spaceship uwu;
-Spaceship ufo;
+// Spaceship ufo;
 Star[] shiny;
 ArrayList <Asteroid> owo = new ArrayList <Asteroid>();
 ArrayList <Bullet> pewpew = new ArrayList <Bullet>();
-ArrayList <Bullet> ohnos = new ArrayList <Bullet>();
+// ArrayList <Bullet> ohnos = new ArrayList <Bullet>();
 Timer timer;
 int delay = 30000;
 //booleans to check if keys are pressed
@@ -20,13 +20,13 @@ modes:
 3 = lose
 */
 
-public void setup() 
+public void setup()
 {
   size(600, 600);
   textAlign(CENTER);
   background(0);
   uwu = new Spaceship(255, 255, 255);
-  ufo = new Spaceship(255, 0, 0);
+  // ufo = new Spaceship(255, 0, 0);
   shiny = new Star[100];
   for (int i=0; i<shiny.length; i++) {
   	shiny[i] = new Star();
@@ -34,10 +34,10 @@ public void setup()
   for (int i=0; i<10; i++) {
   	owo.add(new Asteroid());
   }
-  timer = new Timer();
+  // timer = new Timer();
 }
 
-public void draw() 
+public void draw()
 {
   if (mode == 0) {
     restart();
@@ -172,7 +172,7 @@ public void bullet() {
   for (int i=0; i<pewpew.size(); i++) {
     pewpew.get(i).show();
     pewpew.get(i).move();
-  } 
+  }
 }
 
 // 01.
@@ -195,25 +195,25 @@ public void bullet() {
 // }
 // 10.
 // }, delay);
-
-public void ufoLaunch() {
-  timer.schedule(new TimerTask() {
-    public void run() {
-      loop();
-      ufo.show();
-      ufo.move();
-      ufo.setDirectionX(uwu.getDirectionX());
-      ufo.setDirectionY(uwu.getDirectionY());
-    }
-  },
-  delay
-  );
-}
+//
+// public void ufoLaunch() {
+//   timer.schedule(new TimerTask() {
+//     public void run() {
+//       loop();
+//       ufo.show();
+//       ufo.move();
+//       ufo.setDirectionX(uwu.getDirectionX());
+//       ufo.setDirectionY(uwu.getDirectionY());
+//     }
+//   },
+//   delay
+//   );
+// }
 
 //stop acceleration
 public void stopAccel() {
     uwu.setDirectionX(0);
-    uwu.setDirectionY(0);  
+    uwu.setDirectionY(0);
 }
 
 //check bullet asteroid collision
